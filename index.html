@@ -11,22 +11,61 @@
 
 <body>
     <main class="game-container">
-        <h1>Math Out</h1>
+        <!-- START SCREEN-->
+        <section id="start-screen" class="screen">
+            <h1>Math Out</h1>
+            <p>Work out your brain!</p>
 
-        <div class="stats">
-            <p>Score: <span id="score">0</span></p>
-            <p>Time: <span id="timer">60</span></p>
-        </div>
+            <h2>Choose your difficulty</h2>
+            <div class="difficulty-options">
+                <button class="difficulty-btn" data-difficulty="easy">Easy</button>
+                <button class="difficulty-btn" data-difficulty="medium">Medium</button>
+                <button class="difficulty-btn" data-difficulty="hard">Hard</button>
+            </div>
 
-        <div class="problem">
-            <span id="question">5 + 3</span>
-        </div>
+            <button id="start-btn">
+                Start Game
+            </button>
+        </section>
 
-        <input type="number" id="answer" placeholder="Your answer">
+        <!--GAME SCREEN-->
+        <section id="game-screen" class="screen hidden">
+            <h1>Math Out</h1>
+            <div class="stats">
+                <p>Score: <span id="score">0</span></p>
+                <p>Time: <span id="timer">60</span></p>
+            </div>
+
+            <div class="problem">
+                <span id="question">5 + 3</span>
+            </div>
+
+            <input type="number" id="answer" placeholder="Your answer">
+            
+            <button id="submit-btn">Submit</button>
+
+            <p id="feedback"></p>
+        </section>
+
+        <!--RESULTS SCREEN-->
+        <section id="results-screen" class="screen hidden">
+            <h1>Time's Up</h1>
+
+            <h2>Your Score</h2>
+            <p id="final-score">0</p>
+
+            <p>
+                Accuracy: <span id="accuracy">0%</span>
+            </p>
+
+            <button id="play-again-btn">
+                Play Again
+            </button>
+            <button id="back-home-btn">
+                Go Back Home
+            </button>
+        </section>
         
-        <button id="submit-btn">Submit</button>
-
-        <p id="feedback"></p>
     </main>
 
     <script src="script.js"></script>

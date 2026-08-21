@@ -13,6 +13,40 @@ body {
     border-radius: 12px;
 }
 
+.hidden {
+    display: none;
+}
+
+.screen {
+    text-align: center;
+}
+
+.difficulty-options {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.difficulty-btn {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+}
+
+.difficulty-btn:hover {
+    background: #f0f0f0;
+}
+
+#start-btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
 .stats {
     display: flex;
     justify-content: space-between;
