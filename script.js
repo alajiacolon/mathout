@@ -15,11 +15,13 @@ const finalScoreElement = document.getElementById("final-score");
 const accuracyElement = document.getElementById("accuracy");
 const playAgainButton = document.getElementById("play-again-btn");
 const backHomeButton = document.getElementById("back-home-btn");
+const difficultyButtons = document.querySelectorAll(".difficulty-btn");
 
 let correctAnswer;
 let score = 0;
 let timer;
 let gameOver;
+let difficulty = "easy";
 
 
 //Show Game Screen
@@ -57,6 +59,23 @@ function startGame() {
     }
 }
 
+//Difficulty buttons
+difficultyButtons.forEach(function(button) {
+
+    button.addEventListener("click", function() {
+
+        difficulty = button.dataset.difficulty;
+
+        difficultyButtons.forEach(function(btn){
+            btn.classList.remove("selected");
+        });
+
+        button.classList.add("selected");
+
+    });
+
+});
+
 function showGameScreen(){
     startScreen.classList.add("hidden");
     resultsScreen.classList.add("hidden");
@@ -67,8 +86,22 @@ function showGameScreen(){
 //Generate the Addition Question
 let questionCount = 0;
 function generateQuestion(){
-    const number1 = Math.floor(Math.random() * 10) + 1;
-    const number2 = Math.floor(Math.random() * 10) + 1;
+    let maxNumber;
+
+    switch(difficulty){
+        case "easy":
+            maxNumber = 10;
+            break
+        case "medium":
+            maxNumber = 50;
+            break
+        case "hard":
+            maxNumber = 100;
+            break
+    }
+
+    const number1 = Math.floor(Math.random() * maxNumber) + 1;
+    const number2 = Math.floor(Math.random() * maxNumber) + 1;
 
     correctAnswer = number1 + number2; 
     questionElement.textContent = `${number1} + ${number2}`;

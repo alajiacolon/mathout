@@ -37,7 +37,7 @@ body {
 }
 
 .difficulty-btn:hover {
-    background: #f0f0f0;
+    background: #fae1f3;
 }
 
 #start-btn {
@@ -45,6 +45,10 @@ body {
     border: none;
     border-radius: 8px;
     cursor: pointer;
+    background: #fadcee;
+}
+#start-btn:hover {
+    background: #ed53c1;
 }
 
 .stats {
@@ -67,6 +71,15 @@ button {
     padding: 10px 20px;
     font-size: 18px;
     cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #fadcee;
+}
+
+.difficulty-btn.selected {
+    background-color: #ed53c1;
+    color: white;
 }
 
 #feedback {
