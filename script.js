@@ -36,8 +36,8 @@ function startGame() {
     scoreElement.textContent = score;
     timerElement.textContent = timeRemaining;
 
-    generateQuestion();
     showGameScreen();
+    generateQuestion();
 
     timer = setInterval(function(){
         timeRemaining--;
@@ -105,7 +105,7 @@ function generateQuestion(){
 
     correctAnswer = number1 + number2; 
     questionElement.textContent = `${number1} + ${number2}`;
-
+    answerElement.focus();
     questionCount++;
 }
 generateQuestion(); 
@@ -138,27 +138,24 @@ function checkAnswer() {
         feedbackElement.textContent = "No... :("; 
         answerElement.value = "";
     }
-    generateQuestion();
-    
-    // feedbackElement.textContent = "";
-
-    
+    generateQuestion();    
 }
 
 
 
 //Game over!
 function endGame() {
-    // gameOver = true;
-
+    //reset the game
     clearInterval(timer);
+    answerElement.value = "";
 
+    //display the game over screen
     gameScreen.classList.add("hidden");
     startScreen.classList.add("hidden");
-
     resultsScreen.classList.remove("hidden");
+
+    //display scores
     finalScoreElement.textContent = score;
-    
     let accuracy = (correct / questionCount) * 100;
     accuracyElement.textContent = `${accuracy.toFixed(1)} %`;
 }
