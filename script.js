@@ -1,5 +1,3 @@
-console.log("Math Out is running!")
-
 //html elements:
 const questionElement = document.getElementById("question");
 const answerElement = document.getElementById("answer");
@@ -22,6 +20,8 @@ let score = 0;
 let timer;
 let gameOver;
 let difficulty = "easy";
+let questionCount = 0;
+let correct = 0;
 
 
 //Show Game Screen
@@ -29,7 +29,9 @@ startButton.addEventListener("click", startGame);
 playAgainButton.addEventListener("click", startGame);
 
 function startGame() {
-    score = 0; 
+    questionCount = 0;
+    correct = 0;
+    score = 0;
     timeRemaining = 60;
     gameOver = false;
 
@@ -47,16 +49,11 @@ function startGame() {
             clearInterval(timer);
             gameOver = true;
             feedbackElement.textContent= "Time's up!";
-            console.log("Time is up");
-            endGame();
+            endGame(); 
+            return;
         }
 
     }, 1000); //1000 millisceconds == 1 second
-    if (gameOver == true) {
-        console.log("Game is over")
-        endGame();
-        return;
-    }
 }
 
 //Difficulty buttons
@@ -84,7 +81,6 @@ function showGameScreen(){
 }
 
 //Generate the Addition Question
-let questionCount = 0;
 function generateQuestion(){
     let maxNumber;
 
@@ -106,12 +102,10 @@ function generateQuestion(){
     correctAnswer = number1 + number2; 
     questionElement.textContent = `${number1} + ${number2}`;
     answerElement.focus();
-    questionCount++;
 }
-generateQuestion(); 
+// generateQuestion(); 
 
 //Check the answer
-let correct = 0;
 submitButton.addEventListener("click", checkAnswer);
 
 answerElement.addEventListener("keydown", function (event) {
@@ -138,6 +132,8 @@ function checkAnswer() {
         feedbackElement.textContent = "No... :("; 
         answerElement.value = "";
     }
+
+    questionCount++;
     generateQuestion();    
 }
 
